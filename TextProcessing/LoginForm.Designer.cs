@@ -91,6 +91,7 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(100, 23);
             this.passwordTextBox.TabIndex = 5;
+            this.passwordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTextBox_Validating_1);
             // 
             // errorProvider1
             // 

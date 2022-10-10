@@ -10,36 +10,16 @@ using System.Windows.Forms;
 
 namespace TextProcessing
 {
-    private bool userLoggedIn;
+    
     public partial class MainForm : Form
     {
+        private bool userLoggedIn;
         public MainForm()
         {
             InitializeComponent();
         }
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            // Responsible for setting our property value to false and disabling Menu Option 1.
-            OnLoggedInUpdate(false);
-        }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void menuOption2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form form;
-            if (!CheckIfFormCreated(typeof(CartForm), out form))
-            {
-                CartForm cartForm = new CartForm();
-                cartForm.MdiParent = this;
-                cartForm.WindowState = FormWindowState.Maximized;
-                cartForm.Show();
-
-            }
-        }
         private bool CheckIfFormCreated(Type formType, out Form formInstance)
         {
             bool formCreated = false;
@@ -59,15 +39,6 @@ namespace TextProcessing
             }
 
             return formCreated;
-        }
-        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoginForm loginForm = new LoginForm();
-            // Set the child's property value with the current value stored in the parent
-            loginForm.UserLoggedIn = userLoggedIn;
-            // Show the form as a dialog instead of as a normal window
-            loginForm.ShowDialog();
-            OnLoggedInUpdate(loginForm.UserLoggedIn);
         }
         private void OnLoggedInUpdate(bool didUserLogIn)
         {
@@ -96,12 +67,47 @@ namespace TextProcessing
             }
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             OnLoggedInUpdate(false);
         }
 
-        private void cSVDisplayToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            // Set the child's property value with the current value stored in the parent
+            loginForm.UserLoggedIn = userLoggedIn;
+            // Show the form as a dialog instead of as a normal window
+            loginForm.ShowDialog();
+            OnLoggedInUpdate(loginForm.UserLoggedIn);
+        }
+
+        private void menuOption2ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Form form;
+            if (!CheckIfFormCreated(typeof(CartForm), out form))
+            {
+                CartForm cartForm = new CartForm();
+                cartForm.MdiParent = this;
+                cartForm.WindowState = FormWindowState.Maximized;
+                cartForm.Show();
+            }
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MainForm_Load_1(object sender, EventArgs e)
+        {
+            // Responsible for setting our property value to false and disabling Menu Option 1.
+            OnLoggedInUpdate(false);
+        }
+
+        private void cSVDisplayToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Form form;
             if (!CheckIfFormCreated(typeof(CSVDisplayForm), out form))
@@ -112,6 +118,5 @@ namespace TextProcessing
                 csvForm.Show();
             }
         }
-
     }
 }

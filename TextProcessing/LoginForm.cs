@@ -13,7 +13,7 @@ namespace TextProcessing
 {
     public partial class LoginForm : Form
     {
-        public bool UserLoggedIn { get; set; }      
+        public bool UserLoggedIn { get; set; }
         public LoginForm()
         {
             InitializeComponent();
@@ -97,7 +97,7 @@ namespace TextProcessing
                 this.Close();
         }
 
-        private void passwordTextBox_Validating1(object sender, CancelEventArgs e)
+        private void passwordTextBox_Validating_1(object sender, CancelEventArgs e)
         {
             string message = null;
             e.Cancel = !RVCUserLib.IsPasswordValid(passwordTextBox.Text, out message);
